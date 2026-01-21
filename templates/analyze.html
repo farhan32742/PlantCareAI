@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyze - PlantCare AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
+    <style>
+        .analyze-card { border-radius: 15px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .weather-info { background: #e8f5e9; border-radius: 10px; padding: 15px; margin-bottom: 20px; border-left: 5px solid #2e7d32; }
+        .loading { display: none; }
+        .remedy-box { background: white; padding: 25px; border-radius: 15px; border: 1px solid #eee; }
+    </style>
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{{ url_for('home') }}"><i class="bi bi-flower1"></i> PlantCare AI</a>
+            <div class="navbar-nav ms-auto">
+                <span class="nav-link active">Welcome, {{ session.name }}</span>
+                <a href="{{ url_for('logout') }}" class="btn btn-sm btn-outline-light ms-3">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card analyze-card p-4 mb-4">
+                    <h2 class="text-center mb-4">Disease Diagnostic Center</h2>
+                    
+                    <form method="POST" enctype="multipart/form-data" id="uploadForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">1. Select Plant Leaf Image</label>
+                                <input type="file" name="file" class="form-control" accept="image/*" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">2. Your City (for weather context)</label>
+                                <input type="text" name="city" class="form-control" placeholder="e.g. London, Mumbai" required>
+                            </div>
+                            <div class="col-md-2 d-flex align-items-end">
+                                <button type="submit" class="btn btn-success w-100 py-2 fw-bold">Analyze</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="loading text-center mt-4" id="loadingIndicator">
+                        <div class="spinner-border text-success" role="status"></div>
+                        <p class="mt-2">AI is analyzing image & checking weather...</p>
+                    </div>
+                </div>
+
+                {% if filename %}
+                <div class="row">
+                    <!-- Image & Weather Column -->
+                    <div class="col-md-4">
+                        <div class="card analyze-card mb-4 overflow-hidden">
+                            <img src="{{ url_for('static', filename='uploads/' + filename) }}" class="img-fluid" alt="Upload">
+                            <div class="p-3">
+                                <h5 class="fw-bold">Detection Score</h5>
+                                <div class="progress mb-2" style="height: 10px;">
+
+                                </div>
+                                <small class="text-muted">{{ confidence }} match found</small>
+                            </div>
+                        </div>
+
+                        <div class="weather-info">
+                            <h6 class="fw-bold mb-1"><i class="bi bi-cloud-sun"></i> Weather Context: {{ city }}</h6>
+                            <p class="small mb-0">{{ weather }}</p>
+                        </div>
+                    </div>
+
+                    <!-- AI Result Column -->
+                    <div class="col-md-8">
+                        <div class="remedy-box">
+                            <h3 class="text-success mb-3">{{ disease }}</h3>
+                            <hr>
+                            <div class="markdown-body">
+                                {{ remedy|safe }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function() {
+            document.getElementById('loadingIndicator').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

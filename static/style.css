@@ -1,0 +1,133 @@
+/* General Body Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Navigation Bar */
+.navbar-brand {
+    font-weight: bold;
+    color: #28a745 !important;
+}
+
+.navbar-brand i {
+    color: #28a745;
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+/* Why Choose Us Section */
+.why-choose-us {
+    padding: 60px 0;
+}
+
+.feature-box {
+    padding: 20px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    height: 100%;
+}
+
+.feature-box i {
+    font-size: 2.5rem;
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+/* Call to Action Section */
+.call-to-action {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+/* Footer */
+.footer {
+    padding: 20px 0;
+    background-color: #e9ecef;
+    color: #6c757d;
+}
+
+/*
+===============
+Auth Page Styles
+===============
+*/
+.auth-body {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.auth-container {
+    max-width: 450px;
+    width: 100%;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.auth-logo {
+    font-size: 1.8rem;
+}
+
+/* Tab Styles */
+.nav-pills .nav-link {
+    background-color: #f1f3f5;
+    color: #495057;
+    border-radius: 8px;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #ffffff;
+    color: #343a40;
+    border: 1px solid #dee2e6;
+    font-weight: 500;
+}
+
+/* Form Styles */
+.form-container h3 {
+    font-weight: 600;
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+}
+
+.btn-success {
+    padding: 12px;
+    font-weight: 500;
+    border-radius: 8px;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+/* Back Link */
+.back-link {
+    color: #6c757d;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: #28a745;
+}
