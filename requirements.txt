@@ -1,0 +1,31 @@
+# Web Framework
+Flask==3.0.0
+Flask-MySQLdb==1.1.0
+Flask-Bcrypt==1.0.1
+Werkzeug==3.0.1
+
+# Database
+mysql-connector-python==8.2.0
+PyMySQL==1.1.0
+
+# Machine Learning & Deep Learning
+tensorflow==2.15.0
+numpy==1.24.3
+opencv-python==4.8.1.78
+
+# LangChain & LLM
+langchain==0.1.0
+langchain-core==0.1.0
+langchain-groq==0.1.0
+pydantic==2.5.0
+
+# Utilities
+python-dotenv==1.0.0
+requests==2.31.0
+markdown==3.5.0
+PyYAML==6.0.1
+python-box==7.1.1
+
+# Jupyter (for notebook experiments)
+jupyter==1.0.0
+ipython==8.17.2
